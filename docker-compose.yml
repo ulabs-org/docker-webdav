@@ -1,0 +1,16 @@
+version: '2'
+   
+services:
+  dav:
+    container_name: webdav
+    build: .
+    environment: 
+      - SALT=${SALT}
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - HOME=${SRC}
+    volumes: 
+      - ${SRC}:/var/www
+    extends:
+      file: docker-compose.${ENV}.yml
+      service: dav
